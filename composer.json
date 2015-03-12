@@ -1,0 +1,20 @@
+{
+    "name": "atk4/markdown",
+    "type": "library",
+    "version": "4.3.x",
+    "description": "AgileToolkit markdown javascript editor",
+    "keywords": ["addon","atk4"],
+    "authors": [
+        {
+            "name": "Vadym Radvansky"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "atk4\/atk4":"4.3.*@dev"
+    },
+
+    "autoload": {
+        "psr-0": {"atk4\\markdown": "lib/"}
+    }
+}
