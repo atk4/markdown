@@ -1,0 +1,57 @@
+
+
+**** This template never used ****
+
+
+<script>
+    function toggleMarkdownEditor() {
+        $("#{$_name}_preview").toggle();
+        $("#{$_name}_editor").toggle();
+    }
+</script>
+
+
+<div>
+    <a href="#" onclick="toggleMarkdownEditor()">click to toggle editor</a>
+</div>
+
+
+<div id="{$_name}_preview">
+    {$text}
+</div>
+
+
+<div id="{$_name}_editor" class="features">
+
+    <section class="editor">
+        <div class="outer">
+            <div class="editorwrap">
+                <section class="entry-markdown">
+                    <header class="floatingheader">
+                        &nbsp;&nbsp; Markdown
+                    </header>
+                    <section class="entry-markdown-content">
+
+
+                        {$above_field}{$cells_start}{$before_field}{$input_cell_start}{$before_input}
+                        {$field_input}
+                        {$icon}{$after_input}{$input_cell_stop}{$after_field}{$cells_stop}{$below_field}
+
+
+                    </section>
+                </section>
+                <section class="entry-preview active">
+                    <header class="floatingheader">
+                        &nbsp;&nbsp; Preview <span class="entry-word-count">0 words</span>
+                    </header>
+                    <section class="entry-preview-content">
+                        <div class="rendered-markdown"></div>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+

@@ -10,16 +10,33 @@ namespace atk4\markdown;
 
 class Config {
 
-    private static $instance;
 
+
+
+
+
+
+
+
+
+
+
+
+    /* --------------------------------------------------
+     |
+     |
+     |                Singleton stuff
+     |
+     |
+    */
+
+    private static $instance;
     public static function getInstance() {
         if (!self::$instance) {
             self::$instance = new Config();
         }
         return self::$instance;
     }
-
-
     protected function __construct() {}
 
 }
