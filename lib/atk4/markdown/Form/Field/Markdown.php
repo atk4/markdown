@@ -13,14 +13,18 @@ class Form_Field_Markdown extends \Form_Field_Text {
     protected $total_view;
     protected $text_view;
     protected $text_view_default_content = 'No text yet';
+    protected $image_upload_get_key = 'md_image';
+    protected $image_upload_get_value = 'upload';
 
     function init() {
         parent::init();
         Initiator::getInstance()->addLocation($this->app);
 
+        $this->checkImageUpload();
+
         $this->addWrapper();
 
-        $this->js(true)->atk4_markdown()->markdown($this->name);
+        $this->js(true)->atk4_markdown()->markdown($this->name,$this->app->url(null,['md_image'=>'upload']));
 
     }
 
@@ -31,10 +35,12 @@ class Form_Field_Markdown extends \Form_Field_Text {
 
     function render() {
         $this->js(true)
+            ->_load('gme/dropzone')
             ->_load('gme/ghostdown')
             ->_load('atk4_markdown')
             //->_load('gme/jquery.ghostdown')
             ->_css('gme/ghostdown')
+            ->_css('gme/dropzone')
         ;
         parent::render();
     }
@@ -80,6 +86,15 @@ class Form_Field_Markdown extends \Form_Field_Text {
             </div>
 
         ');
+    }
+
+    protected function checkImageUpload() {
+        if ($_GET[$this->image_upload_get_key] == $this->image_upload_get_value) {
+
+
+
+            exit();
+        }
     }
 
 }
