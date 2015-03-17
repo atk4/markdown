@@ -76,6 +76,9 @@
                                 self.dropzone({
                                     url: image_upload_url,
                                     success: function( file, response ){
+
+                                        response = jQuery.parseJSON ( response );
+
                                         var holderP = $(file.previewElement).closest("p"),
 
                                         // Update the image path in markdown

@@ -8,6 +8,9 @@
 
 namespace atk4\markdown;
 
+use Intervention\Image\ImageManagerStatic as Image;
+
+
 class Form_Field_Markdown extends \Form_Field_Text {
 
     protected $total_view;
@@ -16,9 +19,12 @@ class Form_Field_Markdown extends \Form_Field_Text {
     protected $image_upload_get_key = 'md_image';
     protected $image_upload_get_value = 'upload';
 
+    protected $config;
+
     function init() {
         parent::init();
         Initiator::getInstance()->addLocation($this->app);
+        $this->config = Config::getInstance($this->app);
 
         $this->checkImageUpload();
 
@@ -91,12 +97,34 @@ class Form_Field_Markdown extends \Form_Field_Text {
     protected function checkImageUpload() {
         if ($_GET[$this->image_upload_get_key] == $this->image_upload_get_value) {
 
-            var_dump($_POST); echo '<hr>';
-            var_dump($_GET); echo '<hr>';
-            var_dump($_FILES); echo '<hr>';
+            $file = $_FILES['file'];
+
+            $path = $this->config->getUploadPath();
+            $name = substr(md5(microtime()),0,8) . '_' . $this->sanitizeFilename($file['name']);
+            $full_path = $path . '/' . $name;
+
+            Image::configure(array('driver' => 'gd'));
+            $image = Image::make($file['tmp_name']);
+            $image->save($full_path);
+
+            $data = [
+                'path' => $this->config->getUploadURL() . '/' . $name,
+            ];
+
+            echo json_encode($data);
 
             exit();
         }
+    }
+
+    protected function sanitizeFilename($file) {
+        // Remove anything which isn't a word, whitespace (\s), number
+        // or any of the following caracters -_~,;:[]().
+        $file = preg_replace("([^\w\d\-_~,;:\[\]\(\).])", '', $file);
+        // Remove any runs of periods (thanks falstro!)
+        $file = preg_replace("([\.]{2,})", '', $file);
+
+        return $file;
     }
 
 }
