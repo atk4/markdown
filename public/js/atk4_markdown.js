@@ -79,17 +79,17 @@
                                         var holderP = $(file.previewElement).closest("p"),
 
                                         // Update the image path in markdown
-                                            imgHolderMardown = $(".CodeMirror-code").find('pre').filter(function() {
-                                                return (/^(?:\{<(.*?)>\})?!(?:\[([^\n\]]*)\])(?:\(([^\n\]]*)\))?$/gim).test(self.text()) && (self.find("span").length === 0);
-                                            }),
+                                        imgHolderMardown = $(".CodeMirror-code").find('pre').filter(function() {
+                                            return (/^(?:\{<(.*?)>\})?!(?:\[([^\n\]]*)\])(?:\(([^\n\]]*)\))?$/gim).test(self.text()) && (self.find("span").length === 0);
+                                        }),
 
                                         // Get markdown
-                                            editorOrigVal = editor.getValue(),
-                                            nth = 0,
-                                            newMarkdown = editorOrigVal.replace(/^(?:\{<(.*?)>\})?!(?:\[([^\n\]]*)\])(:\(([^\n\]]*)\))?$/gim, function (match, i, original){
-                                                nth++;
-                                                return (nth === (elemindex+1)) ? (match + "(" + response.path +")") : match;
-                                            });
+                                        editorOrigVal = editor.getValue(),
+                                        nth = 0,
+                                        newMarkdown = editorOrigVal.replace(/^(?:\{<(.*?)>\})?!(?:\[([^\n\]]*)\])(:\(([^\n\]]*)\))?$/gim, function (match, i, original){
+                                            nth++;
+                                            return (nth === (elemindex+1)) ? (match + "(" + response.path +")") : match;
+                                        });
                                         editor.setValue( newMarkdown );
 
                                         // Set image instead of placeholder

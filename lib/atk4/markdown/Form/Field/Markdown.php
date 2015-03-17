@@ -91,7 +91,9 @@ class Form_Field_Markdown extends \Form_Field_Text {
     protected function checkImageUpload() {
         if ($_GET[$this->image_upload_get_key] == $this->image_upload_get_value) {
 
-
+            var_dump($_POST); echo '<hr>';
+            var_dump($_GET); echo '<hr>';
+            var_dump($_FILES); echo '<hr>';
 
             exit();
         }
