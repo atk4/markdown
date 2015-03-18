@@ -204,8 +204,11 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 .CodeMirror-lines {
 	cursor: text;
 }
-.CodeMirror-lines .CodeMirror-code {
-    font: 62.5%/1.65 "Open Sans", sans-serif;
+.CodeMirror-lines .CodeMirror-code, .CodeMirror pre {
+    font-size: 13px !important;
+    line-height: 14px !important;
+    font: "Open Sans", sans-serif;
+    /*font: 62.5%/1.65 "Open Sans", sans-serif;*/
 }
 .CodeMirror pre {
 	-moz-border-radius: 0;
