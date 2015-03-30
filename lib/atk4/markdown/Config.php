@@ -13,6 +13,51 @@ class Config {
     private $app;
 
 
+
+
+
+	/* --------------------------------------------------
+	 |
+	 |
+	 |             Markdown editor types
+	 |
+	 |
+	*/
+
+	const EDITOR_TYPE_GME = 'gme';
+	const EDITOR_TYPE_WP  = 'wp';
+	//const EDITOR_TYPE_MED = 'medium';
+	const EDITOR_TYPE_JMN = 'jrmoran';
+	private $editor_type = self::EDITOR_TYPE_GME;
+	public function setEditorType($type) {
+		if (
+			$type != self::EDITOR_TYPE_GME &&
+			//$type != self::EDITOR_TYPE_MED &&
+			$type != self::EDITOR_TYPE_JMN &&
+			$type != self::EDITOR_TYPE_WP
+		) {
+			throw new \Exception('Type '.$type.' is not supported.');
+		}
+		$this->editor_type = $type;
+		return $this;
+	}
+	public function getEditorType() {
+		return $this->editor_type;
+	}
+
+
+
+
+
+
+	/* --------------------------------------------------
+	 |
+	 |
+	 |               Dropzone support
+	 |
+	 |
+	*/
+
     private $upload_path = false;
     private $upload_url = false;
     public function setUploadPath($upload_path) {
