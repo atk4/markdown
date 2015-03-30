@@ -100,8 +100,8 @@
 								'<button title="Header H1" class="atk-button icon" type="button" code="101">H1</button>' +
 								'<button title="Header H2" class="atk-button icon" type="button" code="102">H2</button>' +
 								'<button title="Header H3" class="atk-button icon" type="button" code="103">H3</button>' +
-								'<button title="Header H4" class="atk-button icon" type="button" code="103">H4</button>' +
-								'<button title="Header H5" class="atk-button icon" type="button" code="103">H5</button>' +
+								'<button title="Header H4" class="atk-button icon" type="button" code="104">H4</button>' +
+								'<button title="Header H5" class="atk-button icon" type="button" code="105">H5</button>' +
 								'<button title="Paragraph" class="atk-button icon" type="button" code="3">P</button>' +
 							'</div>'
 						);
