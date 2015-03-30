@@ -223,6 +223,16 @@ function markUp(btn, txt) {
 		}
 		str = '\n![' + txt + ']\n\n';
 	}
+	// Iframe video
+	else if (btn == 18) {
+		if (!txt) {
+			txt = prompt('Insert video ID', '')
+		}
+		str = (txt != null && txt != '') ?
+			'\n!<iframe title="YouTube video player" width="480" height="390" ' +
+			'src="http://www.youtube.com/embed/' + txt + '" ' +
+			'frameborder="0" allowfullscreen></iframe>\n\n' : txt;
+	}
 //    if (!isEmpty(str)) {
 //        el.replaceSelectedText(str, "select")
 //    }

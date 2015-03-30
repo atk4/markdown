@@ -90,6 +90,7 @@
 								//'<button title="Underline" class="atk-button icon-underline" type="button" code=""></button>' +
 								'<button title="Image URL" class="atk-button icon-picture" type="button" code="6"></button>' +
 								'<button title="Upload Image" class="atk-button icon-publish" type="button" code="17"></button>' +
+								'<button title="Embed video" class="atk-button icon-youtube" type="button" code="18"></button>' +
 								'<button title="Link" class="atk-button icon-link-1" type="button" code="5"></button>' +
 								'<button title="Unordered List" class="atk-button icon-list" type="button" code="9"></button>' +
 								'<button title="Ordered List" class="atk-button icon-list-numbered" type="button" code="10"></button>' +
