@@ -13,6 +13,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class Form_Field_Markdown extends \Form_Field_Text {
 
+	static $js_added = false;
+
     protected $total_view;
     protected $text_view;
     protected $text_view_default_content = 'No text yet';
@@ -52,50 +54,55 @@ class Form_Field_Markdown extends \Form_Field_Text {
     }
 
     function render() {
-		switch ($this->config->getEditorType()) {
-			case Config::EDITOR_TYPE_GME:
-				$this->app->jquery
-					//->addStaticInclude('gme/kv-markdown')
-					//->addStaticInclude('gme/rangyinputs-jquery-1.1.2')
-					->addStaticInclude('gme/button-bar')
-				;
-				$this->js(true)
-					//->_load('gme/kv-markdown')
-					->_load('gme/dropzone')
-					->_load('gme/ghostdown')
-					->_load('atk4_markdown')
-					//->_load('gme/jquery.ghostdown')
-					->_css('gme/ghostdown')
-					->_css('gme/dropzone')
-				;
-				break;
-			/*case Config::EDITOR_TYPE_WP:
-				$this->app->jquery
-					->addStaticInclude('wp/markdown')
-					->addStaticInclude('wp/prettify')
-					->addStaticInclude('wp/pagedown/markdown-converter')
-					->addStaticInclude('wp/pagedown/markdown-editor')
-					->addStaticInclude('wp/pagedown/markdown-sanitizer')
-					->addStaticInclude('atk4_markdown')
-					->addStaticStylesheet('wp/markdown-editor')
-					->addStaticStylesheet('wp/prettify')
-				;
-				break;*/
-			case Config::EDITOR_TYPE_JMN:
-				$this->app->jquery
-					->addStaticInclude('wp/markdown')
-					->addStaticInclude('wp/prettify')
-					->addStaticInclude('wp/pagedown/markdown-converter')
-					->addStaticInclude('wp/pagedown/markdown-editor')
-					->addStaticInclude('wp/pagedown/markdown-sanitizer')
-					->addStaticInclude('atk4_markdown')
-					->addStaticStylesheet('wp/markdown-editor')
-					->addStaticStylesheet('wp/prettify')
-				;
-				break;
-			default:
-				throw $this->exception('Not supported');
+
+		if (!self::$js_added) {
+			switch ($this->config->getEditorType()) {
+				case Config::EDITOR_TYPE_GME:
+					$this->app->jquery
+						//->addStaticInclude('gme/kv-markdown')
+						//->addStaticInclude('gme/rangyinputs-jquery-1.1.2')
+						->addStaticInclude('gme/button-bar')
+					;
+					$this->js(true)
+						//->_load('gme/kv-markdown')
+						->_load('gme/dropzone')
+						->_load('gme/ghostdown')
+						->_load('atk4_markdown')
+						//->_load('gme/jquery.ghostdown')
+						->_css('gme/ghostdown')
+						->_css('gme/dropzone')
+					;
+					break;
+				/*case Config::EDITOR_TYPE_WP:
+					$this->app->jquery
+						->addStaticInclude('wp/markdown')
+						->addStaticInclude('wp/prettify')
+						->addStaticInclude('wp/pagedown/markdown-converter')
+						->addStaticInclude('wp/pagedown/markdown-editor')
+						->addStaticInclude('wp/pagedown/markdown-sanitizer')
+						->addStaticInclude('atk4_markdown')
+						->addStaticStylesheet('wp/markdown-editor')
+						->addStaticStylesheet('wp/prettify')
+					;
+					break;*/
+				case Config::EDITOR_TYPE_JMN:
+					$this->app->jquery
+						->addStaticInclude('wp/markdown')
+						->addStaticInclude('wp/prettify')
+						->addStaticInclude('wp/pagedown/markdown-converter')
+						->addStaticInclude('wp/pagedown/markdown-editor')
+						->addStaticInclude('wp/pagedown/markdown-sanitizer')
+						->addStaticInclude('atk4_markdown')
+						->addStaticStylesheet('wp/markdown-editor')
+						->addStaticStylesheet('wp/prettify')
+					;
+					break;
+				default:
+					throw $this->exception('Not supported');
+			}
+			self::$js_added = true;
 		}
+
         parent::render();
     }
 
@@ -111,7 +118,7 @@ class Form_Field_Markdown extends \Form_Field_Text {
 
 				$this->template->setHTML('before_field','
 
-					<div class="features" id="markdown-editor-wrapper">
+					<div class="features markdown-editor-wrapper">
 
 						<section class="editor">
 							<div class="outer">

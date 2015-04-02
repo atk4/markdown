@@ -83,7 +83,8 @@
                     }
 
 					function addButtonBar() {
-						$('#markdown-editor-wrapper').before(
+
+						$('#'+field).closest('.markdown-editor-wrapper').first().before(
 							'<div id="markdown-buttons" class="atk-buttonset">' +
 								'<button title="Bold" class="atk-button icon-bold" type="button" code="1"></button>' +
 								'<button title="Itlic" class="atk-button icon-italic" type="button" code="2"></button>' +
